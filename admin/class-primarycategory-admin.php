@@ -57,54 +57,6 @@ class Primarycategory_Admin
     }
 
     /**
-     * Register the stylesheets for the admin area.
-     *
-     * @since    1.0.0
-     */
-    public function enqueue_styles()
-    {
-
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Primarycategory_Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Primarycategory_Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-
-        wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/primarycategory-admin.css', array(), $this->version, 'all');
-
-    }
-
-    /**
-     * Register the JavaScript for the admin area.
-     *
-     * @since    1.0.0
-     */
-    public function enqueue_scripts()
-    {
-
-        /**
-         * This function is provided for demonstration purposes only.
-         *
-         * An instance of this class should be passed to the run() function
-         * defined in Primarycategory_Loader as all of the hooks are defined
-         * in that particular class.
-         *
-         * The Primarycategory_Loader will then create the relationship
-         * between the defined hooks and the functions defined in this
-         * class.
-         */
-
-        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/primarycategory-admin.js', array('jquery'), $this->version, false);
-
-    }
-
-    /**
      * Register the JavaScript for Gutenberg.
      *
      * @since    1.0.0
@@ -114,9 +66,11 @@ class Primarycategory_Admin
         wp_enqueue_script('block_editor_js', plugin_dir_url(__FILE__) . 'js/primarycategory-gutenberg.js', array('wp-plugins', 'wp-edit-post', 'wp-element'), $this->version, false);
     }
 
-
-
-
+    /**
+     * Check if is used  classic editor.
+     *
+     * @since    1.0.0
+     */
     public function maybe_is_classic_editor(){
         if(!get_current_screen()->is_block_editor()){
             require_once plugin_dir_path( dirname( __FILE__ ) ) . '/admin/class-primarycategory-classic-eitor.php';

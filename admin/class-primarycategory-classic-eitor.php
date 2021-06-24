@@ -34,6 +34,22 @@ class Primarycategory_Admin_Classic_Editor
     {
         add_action('add_meta_boxes', array($this, 'primary_category_box'));
         add_action('save_post', array($this, 'save_post'), 10, 2);
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_scripts'), 10, 2);
+
+
+    }
+
+
+    /**
+     * Register the JavaScript for the clasic editor.
+     *
+     * @since    1.0.0
+     */
+    public function enqueue_scripts()
+    {
+
+        wp_enqueue_script('classic-editor', plugin_dir_url(__FILE__) . 'js/primarycategory-classic-editor.js', array('jquery'), 1.1, false);
+
     }
 
     /**
@@ -42,8 +58,6 @@ class Primarycategory_Admin_Classic_Editor
      */
     public function save_post($post_id, $post)
     {
-
-
 
         if (isset($post->post_status) && 'auto-draft' == $post->post_status) {
             return;

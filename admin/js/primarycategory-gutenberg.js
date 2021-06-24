@@ -7,7 +7,7 @@ var compose = wp.compose.compose;
 var useEffect = wp.element.useEffect;
 
 
-function PrimaryCategoryPlugin( {meta: {primary_category = false},  SetPrimaryCategory ,selectedcategorie} ) {
+function PrimaryCategoryPlugin( {meta: {primary_category = false},  SetPrimaryCategory ,SelectedCategoriesIds} ) {
 
     const [ PrimaryCategoryState, SetPrimaryCategoryState ] = useState( primary_category );
     const [ optionsState, SetoptionsState ] = useState( [{}] );
@@ -18,13 +18,13 @@ function PrimaryCategoryPlugin( {meta: {primary_category = false},  SetPrimaryCa
 
 
     useEffect(() => {
-        let categoriesString = selectedcategorie.join();
+        let categoriesString = SelectedCategoriesIds.join();
         wp.apiFetch({
             path: `primarycategory/v1/terms/${categoriesString}`,
         }).then(data => {
             SetoptionsState(data);
         });
-    }, [selectedcategorie]);
+    }, [SelectedCategoriesIds]);
 
     if(optionsState.length < 2){
         return el('span');
@@ -56,7 +56,6 @@ const SetPrimaryCategory = withDispatch((dispatch) => ({
 const PrimaryCategory = compose(
     PrimaryCategoryMeta,
     SetPrimaryCategory
-
 )(PrimaryCategoryPlugin);
 
 function customizeCategoryBox( OriginalComponent ) {
@@ -67,7 +66,7 @@ function customizeCategoryBox( OriginalComponent ) {
                 'div',
                 { className: 'className' },
                 el( OriginalComponent, props ),
-                el(PrimaryCategory ,{selectedcategorie:props.terms})
+                el(PrimaryCategory ,{SelectedCategoriesIds:props.terms})
             );
         } else {
             return  el( OriginalComponent, props )
