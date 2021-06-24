@@ -76,10 +76,8 @@ class Primarycategory_Admin_Classic_Editor
         if (false !== wp_is_post_revision($post_id)) {
             return;
         }
-        if (isset($_POST['primary_category'])) {
-            update_post_meta($post_id, 'primary_category', $_POST['primary_category']);
-        }
 
+        update_post_meta($post_id, 'primary_category', $_POST['primary_category']);
 
     }
 
@@ -91,7 +89,7 @@ class Primarycategory_Admin_Classic_Editor
 
         add_meta_box(
             'message_categories_custom_box',
-            'Primary category',
+            __( 'Primary category', 'primarycategory' ),
             array($this, 'primary_category_metabox'),
             'post'
         );
@@ -120,7 +118,7 @@ class Primarycategory_Admin_Classic_Editor
     public function html_select($name, $options, $selected_value)
     {
         print '<select name="' . $name . '"  id="primary_category_select" >';
-        print '<option value>Select</option>';
+        print '<option value>'. __( 'Select', 'primarycategory' ).'</option>';
         foreach ($options as $option) {
             printf(
                 '<option value= "%d" %s >%s</option>',

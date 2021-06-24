@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Primary Category
  * Plugin URI:        PrimaryCategory
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Offers the possibility to select the primary category for posts.
  * Version:           1.0.0
  * Author:            Varun Mehta
  * Author URI:        mehta.varun0125@gmail.com

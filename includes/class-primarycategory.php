@@ -125,6 +125,13 @@ class Primarycategory
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-primarycategory-public.php';
 
+
+        /**
+         * The class responsible for defining helpers functions
+         * side of the site.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-primarycategory-helper.php';
+
         $this->loader = new Primarycategory_Loader();
 
     }
