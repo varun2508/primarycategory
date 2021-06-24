@@ -19,14 +19,14 @@ class PrimaryCategoryHelper
      * @since    1.0.0
      * @access   private
      */
-    public static function get_primary_term_id( $post_id = null )
+    public static function get_primary_term_id($post_id = null)
     {
-        if(! $post_id ){
+        if (!$post_id) {
             global $post;
             $post_id = $post->ID;
         }
 
-       return get_post_meta( $post_id, 'primary_category', true ) ?? false;
+        return get_post_meta($post_id, 'primary_category', true) ?? false;
 
     }
 

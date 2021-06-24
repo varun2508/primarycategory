@@ -105,7 +105,7 @@ class Primarycategory_Public
     public function register_category_post_meta()
     {
         register_post_meta(
-            'post',
+            '',
             'primary_category',
             [
                 'single' => true,
@@ -115,6 +115,7 @@ class Primarycategory_Public
 
             ]
         );
+
     }
 
 

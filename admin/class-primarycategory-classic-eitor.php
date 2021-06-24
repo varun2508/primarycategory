@@ -76,8 +76,10 @@ class Primarycategory_Admin_Classic_Editor
         if (false !== wp_is_post_revision($post_id)) {
             return;
         }
+       if(isset($_POST['primary_category'])){
+           update_post_meta($post_id, 'primary_category', $_POST['primary_category']);
+       }
 
-        update_post_meta($post_id, 'primary_category', $_POST['primary_category']);
 
     }
 
@@ -91,7 +93,7 @@ class Primarycategory_Admin_Classic_Editor
             'message_categories_custom_box',
             __( 'Primary category', 'primarycategory' ),
             array($this, 'primary_category_metabox'),
-            'post'
+            Primarycategory_Admin::get_allowed_post_type()
         );
 
 

@@ -50,10 +50,8 @@ class Primarycategory_Admin
      */
     public function __construct($plugin_name, $version)
     {
-
         $this->plugin_name = $plugin_name;
         $this->version = $version;
-
     }
 
     /**
@@ -78,5 +76,13 @@ class Primarycategory_Admin
 
     }
 
+    /**
+     * Return all  allowed post type.
+     *
+     * @since    1.0.0
+     */
+    public static function get_allowed_post_type(){
+       return apply_filters( 'primary_category_allowed_posts_type',['post'] );
+    }
 
 }
